@@ -1357,7 +1357,7 @@ static void reg_set_request_processed(void)
 	spin_unlock(&reg_requests_lock);
 
 	if (last_request->initiator == NL80211_REGDOM_SET_BY_USER)
-		cancel_delayed_work_sync(&reg_timeout);
+		cancel_delayed_work(&reg_timeout);
 
 	if (need_more_processing)
 		schedule_work(&reg_work);
@@ -2277,7 +2277,7 @@ void /* __init_or_exit */ regulatory_exit(void)
 	struct reg_beacon *reg_beacon, *btmp;
 
 	cancel_work_sync(&reg_work);
-	cancel_delayed_work_sync(&reg_timeout);
+	cancel_delayed_work(&reg_timeout);
 
 	mutex_lock(&cfg80211_mutex);
 	mutex_lock(&reg_mutex);
