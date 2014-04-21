@@ -1543,8 +1543,9 @@ int dev_forward_skb(struct net_device *dev, struct sk_buff *skb)
 	skb->pkt_type = PACKET_HOST;
 	skb->protocol = eth_type_trans(skb, dev);
 	skb->mark = 0;
-	 secpath_reset(skb);
+	secpath_reset(skb);
 	nf_reset(skb);
+	nf_reset_trace(skb);
 	return netif_rx(skb);
 }
 EXPORT_SYMBOL_GPL(dev_forward_skb);
