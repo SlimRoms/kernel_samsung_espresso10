@@ -1396,6 +1396,7 @@ static int scsi_lld_busy(struct request_queue *q)
 		return 0;
 
 	shost = sdev->host;
+
 	/*
 	 * Ignore host/starget busy state.
 	 * Since block layer does not have a concept of fairness across

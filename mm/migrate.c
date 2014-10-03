@@ -255,8 +255,8 @@ static bool buffer_migrate_lock_buffers(struct buffer_head *head,
 	/* async case, we cannot block on lock_buffer so use trylock_buffer */
 	do {
 		get_bh(bh);
-		 if (!trylock_buffer(bh)) {
-			 /*
+		if (!trylock_buffer(bh)) {
+			/*
 			 * We failed to lock the buffer and cannot stall in
 			 * async migration. Release the taken locks
 			 */
@@ -839,7 +839,6 @@ uncharge:
 		mem_cgroup_end_migration(mem, page, newpage, rc == 0);
 unlock:
 	unlock_page(page);
-
 out:
 	return rc;
 }
@@ -871,7 +870,7 @@ static int unmap_and_move(new_page_t get_new_page, unsigned long private,
 	rc = __unmap_and_move(page, newpage, force, offlining, mode);
 out:
 	if (rc != -EAGAIN) {
- 		/*
+		/*
 		 * A page that has been migrated has all references
 		 * removed and will be freed. A page that has not been
 		 * migrated will have kepts its references and be

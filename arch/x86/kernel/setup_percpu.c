@@ -190,18 +190,17 @@ void __init setup_per_cpu_areas(void)
 		size_t atom_size;
 
 		/*
-		* On 64bit, use PMD_SIZE for atom_size so that embedded
-		* percpu areas are aligned to PMD. This, in the future,
-		* can also allow using PMD mappings in vmalloc area. Use
-		* PAGE_SIZE on 32bit as vmalloc space is highly contended
-		* and large vmalloc area allocs can easily fail.
-		*/
+		 * On 64bit, use PMD_SIZE for atom_size so that embedded
+		 * percpu areas are aligned to PMD.  This, in the future,
+		 * can also allow using PMD mappings in vmalloc area.  Use
+		 * PAGE_SIZE on 32bit as vmalloc space is highly contended
+		 * and large vmalloc area allocs can easily fail.
+		 */
 #ifdef CONFIG_X86_64
 		atom_size = PMD_SIZE;
 #else
 		atom_size = PAGE_SIZE;
 #endif
-
 		rc = pcpu_embed_first_chunk(PERCPU_FIRST_CHUNK_RESERVE,
 					    dyn_size, atom_size,
 					    pcpu_cpu_distance,

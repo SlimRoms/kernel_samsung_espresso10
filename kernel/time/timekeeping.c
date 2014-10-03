@@ -1162,8 +1162,8 @@ void get_xtime_and_monotonic_and_sleep_offset(struct timespec *xtim,
 #ifdef CONFIG_HIGH_RES_TIMERS
 /**
  * ktime_get_update_offsets - hrtimer helper
- * @real: pointer to storage for monotonic -> realtime offset
- * @_boot: pointer to storage for monotonic -> boottime offset
+ * @real:	pointer to storage for monotonic -> realtime offset
+ * @_boot:	pointer to storage for monotonic -> boottime offset
  *
  * Returns current monotonic time and updates the offsets
  * Called from hrtimer_interupt() or retrigger_next_event()

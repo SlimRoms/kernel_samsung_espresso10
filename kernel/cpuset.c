@@ -982,6 +982,7 @@ static void cpuset_change_task_nodemask(struct task_struct *tsk,
 	 */
 	need_loop = task_has_mempolicy(tsk) ||
 			!nodes_intersects(*newmems, tsk->mems_allowed);
+
 	if (need_loop)
 		write_seqcount_begin(&tsk->mems_allowed_seq);
 

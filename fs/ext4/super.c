@@ -3733,6 +3733,7 @@ cantfind_ext4:
 
 	if (!silent)
 		ext4_msg(sb, KERN_ERR, "VFS: Can't find ext4 filesystem");
+
 	goto failed_mount;
 
 failed_mount7:

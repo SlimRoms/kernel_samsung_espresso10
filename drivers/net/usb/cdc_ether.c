@@ -279,7 +279,7 @@ next_desc:
 	 * for descriptors.
 	 *
 	 * Some Android RNDIS devices have a CDC Union descriptor pointing
-	 * to non-existing interfaces. Ignore that and attempt the same
+	 * to non-existing interfaces.  Ignore that and attempt the same
 	 * hard-wired 0 and 1 interfaces.
 	 */
 	if (rndis && (!info->u || android_rndis_quirk)) {
@@ -482,7 +482,7 @@ static const struct driver_info wwan_info = {
 /*-------------------------------------------------------------------------*/
 
 #define HUAWEI_VENDOR_ID	0x12D1
-#define NOVATEL_VENDOR_ID 	0x1410
+#define NOVATEL_VENDOR_ID	0x1410
 
 static const struct usb_device_id	products [] = {
 /*
@@ -620,7 +620,6 @@ static const struct usb_device_id	products [] = {
 			USB_CDC_SUBCLASS_ETHERNET, USB_CDC_PROTO_NONE),
 	.driver_info = (kernel_ulong_t) &wwan_info,
 }, {
-
 	USB_INTERFACE_INFO(USB_CLASS_COMM, USB_CDC_SUBCLASS_ETHERNET,
 			USB_CDC_PROTO_NONE),
 	.driver_info = (unsigned long) &cdc_info,

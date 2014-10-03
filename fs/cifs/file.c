@@ -1007,7 +1007,6 @@ refind_writable:
 		if (fsuid_only && open_file->uid != current_fsuid())
 			continue;
 		if (OPEN_FMODE(open_file->f_flags) & FMODE_WRITE) {
-
 			if (!open_file->invalidHandle) {
 				/* found a good writable file */
 				cifsFileInfo_get(open_file);
@@ -1029,6 +1028,7 @@ refind_writable:
 		any_available = false;
 		cifsFileInfo_get(inv_file);
 	}
+
 	spin_unlock(&cifs_file_list_lock);
 
 	if (inv_file) {
@@ -1038,7 +1038,7 @@ refind_writable:
 		else {
 			spin_lock(&cifs_file_list_lock);
 			list_move_tail(&inv_file->flist,
-				&cifs_inode->openFileList);
+					&cifs_inode->openFileList);
 			spin_unlock(&cifs_file_list_lock);
 			cifsFileInfo_put(inv_file);
 			spin_lock(&cifs_file_list_lock);

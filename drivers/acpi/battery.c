@@ -722,6 +722,7 @@ static void acpi_battery_refresh(struct acpi_battery *battery)
 	power_unit = battery->power_unit;
 
 	acpi_battery_get_info(battery);
+
 	if (power_unit == battery->power_unit)
 		return;
 

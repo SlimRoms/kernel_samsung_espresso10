@@ -1955,11 +1955,11 @@ __alloc_pages_direct_compact(gfp_t gfp_mask, unsigned int order,
 		count_vm_event(COMPACTFAIL);
 
 		/*
-	 * As async compaction considers a subset of pageblocks, only
-	 * defer if the failure was a sync compaction failure.
-	 */
-	if (sync_migration)
-		defer_compaction(preferred_zone);
+		 * As async compaction considers a subset of pageblocks, only
+		 * defer if the failure was a sync compaction failure.
+		 */
+		if (sync_migration)
+			defer_compaction(preferred_zone);
 
 		cond_resched();
 	}

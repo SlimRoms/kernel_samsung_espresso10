@@ -306,12 +306,13 @@ static inline int cipso_v4_validate(const struct sk_buff *skb,
 			err_offset = opt_iter + 1;
 			goto out;
 		}
-	opt_iter += opt[opt_iter + 1];
+		opt_iter += opt[opt_iter + 1];
 	}
 
 out:
 	*option = opt + err_offset;
 	return err_offset;
+
 }
 #endif /* CONFIG_NETLABEL */
 

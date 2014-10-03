@@ -490,10 +490,12 @@ retry_cpuset:
 			}
 		}
 	}
+
 	mpol_cond_put(mpol);
 	if (unlikely(!put_mems_allowed(cpuset_mems_cookie) && !page))
 		goto retry_cpuset;
 	return page;
+
 err:
 	mpol_cond_put(mpol);
 	return NULL;

@@ -455,7 +455,7 @@ static __initconst const struct x86_pmu amd_pmu = {
  * 0x1D6	EX	PERF_CTL[5:0]
  * 0x1D8	EX	PERF_CTL[5:0]
  *
- * (*) depending on the umask all FPU counters may be used
+ * (*)  depending on the umask all FPU counters may be used
  * (**) only one unitmask enabled at a time
  */
 

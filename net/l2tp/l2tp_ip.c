@@ -291,6 +291,7 @@ static int l2tp_ip_bind(struct sock *sk, struct sockaddr *uaddr, int addr_len)
 	write_unlock_bh(&l2tp_ip_lock);
 	ret = 0;
 	sock_reset_flag(sk, SOCK_ZAPPED);
+
 out:
 	release_sock(sk);
 

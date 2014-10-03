@@ -500,10 +500,10 @@ static void ieee80211_do_stop(struct ieee80211_sub_if_data *sdata,
 	default:
 		mutex_lock(&local->mtx);
 		if (local->hw_roc_dev == sdata->dev &&
-		local->hw_roc_channel) {
-		    /* ignore return value since this is racy */
-		    drv_cancel_remain_on_channel(local);
-		    ieee80211_queue_work(&local->hw, &local->hw_roc_done);
+		    local->hw_roc_channel) {
+			/* ignore return value since this is racy */
+			drv_cancel_remain_on_channel(local);
+			ieee80211_queue_work(&local->hw, &local->hw_roc_done);
 		}
 		mutex_unlock(&local->mtx);
 

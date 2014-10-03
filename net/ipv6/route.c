@@ -2881,7 +2881,7 @@ static void __net_exit ip6_route_net_exit(struct net *net)
 
 static int __net_init ip6_route_net_init_late(struct net *net)
 {
-	#ifdef CONFIG_PROC_FS
+#ifdef CONFIG_PROC_FS
 	proc_net_fops_create(net, "ipv6_route", 0, &ipv6_route_proc_fops);
 	proc_net_fops_create(net, "rt6_stats", S_IRUGO, &rt6_stats_seq_fops);
 #endif
@@ -2894,7 +2894,6 @@ static void __net_exit ip6_route_net_exit_late(struct net *net)
 	proc_net_remove(net, "ipv6_route");
 	proc_net_remove(net, "rt6_stats");
 #endif
-
 }
 
 static struct pernet_operations ip6_route_net_ops = {
@@ -2975,7 +2974,6 @@ out:
 
 out_register_late_subsys:
 	unregister_pernet_subsys(&ip6_route_net_late_ops);
-
 fib6_rules_init:
 	fib6_rules_cleanup();
 xfrm6_init:

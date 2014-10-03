@@ -31,7 +31,7 @@ extern struct fs_struct init_fs;
 #endif
 
 #ifdef CONFIG_CPUSETS
-#define INIT_CPUSET_SEQ \
+#define INIT_CPUSET_SEQ							\
 	.mems_allowed_seq = SEQCNT_ZERO,
 #else
 #define INIT_CPUSET_SEQ

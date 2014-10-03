@@ -1253,7 +1253,7 @@ static unsigned long isolate_pages_global(unsigned long nr,
 					struct list_head *dst,
 					unsigned long *scanned, int order,
 					isolate_mode_t mode,
-					struct zone *z, int active, int file)
+					struct zone *z,	int active, int file)
 {
 	int lru = LRU_BASE;
 	if (active)
@@ -2099,7 +2099,7 @@ static inline bool compaction_ready(struct zone *zone, struct scan_control *sc)
 	if (sc->order <= PAGE_ALLOC_COSTLY_ORDER)
 		return false;
 
-	 /*
+	/*
 	 * Compaction takes time to run and there are potentially other
 	 * callers using the pages just freed. Continue reclaiming until
 	 * there is a buffer of free pages available to give compaction
@@ -2261,6 +2261,7 @@ static unsigned long do_try_to_free_pages(struct zonelist *zonelist,
 
 	if (scanning_global_lru(sc))
 		count_vm_event(ALLOCSTALL);
+
 	for (priority = DEF_PRIORITY; priority >= 0; priority--) {
 		sc->nr_scanned = 0;
 		if (!priority)

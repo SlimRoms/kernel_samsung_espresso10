@@ -367,7 +367,6 @@ int second_overflow(unsigned long secs)
 	 * day, the system clock is set back one second; if in leap-delete
 	 * state, the system clock is set ahead one second.
 	 */
-
 	switch (time_state) {
 	case TIME_OK:
 		if (time_status & STA_INS)
@@ -394,18 +393,19 @@ int second_overflow(unsigned long secs)
 			time_tai--;
 			time_state = TIME_WAIT;
 			printk(KERN_NOTICE
-			"Clock: deleting leap second 23:59:59 UTC\n");
+				"Clock: deleting leap second 23:59:59 UTC\n");
 		}
 		break;
-
 	case TIME_OOP:
 		time_state = TIME_WAIT;
 		break;
+
 	case TIME_WAIT:
 		if (!(time_status & (STA_INS | STA_DEL)))
 			time_state = TIME_OK;
 		break;
 	}
+
 
 	/* Bump the maxerror field */
 	time_maxerror += MAXFREQ / NSEC_PER_USEC;
@@ -504,6 +504,7 @@ static void notify_cmos_timer(void)
 #else
 static inline void notify_cmos_timer(void) { }
 #endif
+
 
 /*
  * Propagate a new txc->status value into the NTP state:

@@ -222,7 +222,7 @@ TRACE_EVENT(mm_shrink_slab_start,
 		__entry->cache_items,
 		__entry->delta,
 		__entry->total_scan)
-	);
+);
 
 TRACE_EVENT(mm_shrink_slab_end,
 	TP_PROTO(struct shrinker *shr, int shrinker_retval,
@@ -255,7 +255,7 @@ TRACE_EVENT(mm_shrink_slab_end,
 		__entry->new_scan,
 		__entry->total_scan,
 		__entry->retval)
-	);
+);
 
 DECLARE_EVENT_CLASS(mm_vmscan_lru_isolate_template,
 

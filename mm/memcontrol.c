@@ -4617,6 +4617,7 @@ swap_buffers:
 		kfree(thresholds->spare);
 		thresholds->spare = NULL;
 	}
+
 	rcu_assign_pointer(thresholds->primary, new);
 
 	/* To be sure that nobody uses thresholds */

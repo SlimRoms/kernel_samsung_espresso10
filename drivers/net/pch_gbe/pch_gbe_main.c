@@ -2415,7 +2415,7 @@ static int pch_gbe_probe(struct pci_dev *pdev,
 		 * is set.
 		 */
 		dev_err(&pdev->dev, "Invalid MAC address, "
-				    "interface disabled.\n");
+		                    "interface disabled.\n");
 	}
 	setup_timer(&adapter->watchdog_timer, pch_gbe_watchdog,
 		    (unsigned long)adapter);
@@ -2479,7 +2479,7 @@ static DEFINE_PCI_DEVICE_TABLE(pch_gbe_pcidev_id) = {
 	 .subdevice = PCI_ANY_ID,
 	 .class = (PCI_CLASS_NETWORK_ETHERNET << 8),
 	 .class_mask = (0xFFFF00)
-	},
+	 },
 	/* required last entry */
 	{0}
 };

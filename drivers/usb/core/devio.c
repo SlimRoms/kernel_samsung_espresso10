@@ -299,6 +299,7 @@ static struct async *async_getpending(struct dev_state *ps,
 			list_del_init(&as->asynclist);
 			return as;
 		}
+
 	return NULL;
 }
 
@@ -1379,7 +1380,6 @@ static int proc_unlinkurb(struct dev_state *ps, void __user *arg)
 	unsigned long flags;
 
 	spin_lock_irqsave(&ps->lock, flags);
-
 	as = async_getpending(ps, arg);
 	if (!as) {
 		spin_unlock_irqrestore(&ps->lock, flags);

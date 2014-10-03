@@ -720,7 +720,7 @@ static int handshake(void __iomem *ptr, u32 mask, u32 done,
 	return -ETIMEDOUT;
 }
 
-#define PCI_DEVICE_ID_INTEL_LYNX_POINT_XHCI 0x8C31
+#define PCI_DEVICE_ID_INTEL_LYNX_POINT_XHCI	0x8C31
 #define PCI_DEVICE_ID_INTEL_LYNX_POINT_LP_XHCI	0x9C31
 
 bool usb_is_intel_ppt_switchable_xhci(struct pci_dev *pdev)
@@ -729,6 +729,7 @@ bool usb_is_intel_ppt_switchable_xhci(struct pci_dev *pdev)
 		pdev->vendor == PCI_VENDOR_ID_INTEL &&
 		pdev->device == PCI_DEVICE_ID_INTEL_PANTHERPOINT_XHCI;
 }
+
 /* The Intel Lynx Point chipset also has switchable ports. */
 bool usb_is_intel_lpt_switchable_xhci(struct pci_dev *pdev)
 {
@@ -820,7 +821,7 @@ void usb_enable_xhci_ports(struct pci_dev *xhci_pdev)
 			"defaulting to EHCI.\n");
 	dev_warn(&xhci_pdev->dev,
 			"USB 3.0 devices will work at USB 2.0 speeds.\n");
-#endif /* CONFIG_USB_XHCI_HCD || CONFIG_USB_XHCI_HCD_MODULE */
+#endif	/* CONFIG_USB_XHCI_HCD || CONFIG_USB_XHCI_HCD_MODULE */
 
 }
 EXPORT_SYMBOL_GPL(usb_enable_xhci_ports);
