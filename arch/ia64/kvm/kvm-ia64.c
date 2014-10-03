@@ -1168,7 +1168,7 @@ out:
 
 #define PALE_RESET_ENTRY    0x80000000ffffffb0UL
 
-+bool kvm_vcpu_compatible(struct kvm_vcpu *vcpu)
+bool kvm_vcpu_compatible(struct kvm_vcpu *vcpu)
 {
 	return irqchip_in_kernel(vcpu->kcm) == (vcpu->arch.apic != NULL);
 }

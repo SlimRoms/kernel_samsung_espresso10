@@ -279,14 +279,13 @@ EXPORT_SYMBOL_GPL(usbnet_change_mtu);
 
 /* The caller must hold list->lock */
 static void __usbnet_queue_skb(struct sk_buff_head *list,
-		struct sk_buff *newsk, enum skb_state state)
+			struct sk_buff *newsk, enum skb_state state)
 {
 	struct skb_data *entry = (struct skb_data *) newsk->cb;
 
 	__skb_queue_tail(list, newsk);
 	entry->state = state;
 }
-
 
 /*-------------------------------------------------------------------------*/
 
@@ -298,7 +297,7 @@ static enum skb_state defer_bh(struct usbnet *dev, struct sk_buff *skb,
 		struct sk_buff_head *list, enum skb_state state)
 {
 	unsigned long		flags;
-	enum skb_state		old_state;
+	enum skb_state 		old_state;
 	struct skb_data *entry = (struct skb_data *) skb->cb;
 
 	spin_lock_irqsave(&list->lock, flags);
@@ -440,7 +439,7 @@ static void rx_complete (struct urb *urb)
 	struct skb_data		*entry = (struct skb_data *) skb->cb;
 	struct usbnet		*dev = entry->dev;
 	int			urb_status = urb->status;
-	enum			skb_state state;
+	enum skb_state		state;
 
 	skb_put (skb, urb->actual_length);
 	state = rx_done;

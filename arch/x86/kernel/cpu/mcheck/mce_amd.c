@@ -87,7 +87,7 @@ struct thresh_restart {
 
 static bool lvt_interrupt_supported(unsigned int bank, u32 msr_high_bits)
 {
-	 /*
+	/*
 	 * bank 4 supports APIC LVT interrupts implicitly since forever.
 	 */
 	if (bank == 4)
@@ -164,7 +164,7 @@ static void threshold_restart_bank(void *_tr)
 	if (tr->b->interrupt_enable)
 		hi |= INT_TYPE_APIC;
 
-done:
+ done:
 
 	hi |= MASK_COUNT_EN_HI;
 	wrmsr(tr->b->address, lo, hi);
@@ -238,7 +238,7 @@ void mce_amd_feature_init(struct cpuinfo_x86 *c)
 
 			if (b.interrupt_capable) {
 				int new = (high & MASK_LVTOFF_HI) >> 20;
-			offset = setup_APIC_mce(offset, new);
+				offset  = setup_APIC_mce(offset, new);
 			}
 
 			mce_threshold_block_init(&b, offset);
@@ -339,6 +339,9 @@ store_interrupt_enable(struct threshold_block *b, const char *buf, size_t size)
 	struct thresh_restart tr;
 	unsigned long new;
 
+	if (!b->interrupt_capable)
+		return -EINVAL;
+
 	if (strict_strtoul(buf, 0, &new) < 0)
 		return -EINVAL;
 
@@ -357,9 +360,6 @@ store_threshold_limit(struct threshold_block *b, const char *buf, size_t size)
 {
 	struct thresh_restart tr;
 	unsigned long new;
-
-	if (!b->interrupt_capable)
-		return -EINVAL;
 
 	if (strict_strtoul(buf, 0, &new) < 0)
 		return -EINVAL;

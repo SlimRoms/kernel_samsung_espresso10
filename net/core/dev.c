@@ -1411,7 +1411,7 @@ EXPORT_SYMBOL(register_netdevice_notifier);
  *	kernel structures and may then be reused. A negative errno code
  *	is returned on a failure.
  *
- *	After unregistering unregister and down device events are synthesized
+ * 	After unregistering unregister and down device events are synthesized
  *	for all devices on the device list to the removed notifier to remove
  *	the need for special case cleanup code.
  */
@@ -1538,7 +1538,7 @@ int dev_forward_skb(struct net_device *dev, struct sk_buff *skb)
 		return NET_RX_DROP;
 	}
 	skb->dev = dev;
-	skb_dst_drop(skb);;
+	skb_dst_drop(skb);
 	skb->tstamp.tv64 = 0;
 	skb->pkt_type = PACKET_HOST;
 	skb->protocol = eth_type_trans(skb, dev);

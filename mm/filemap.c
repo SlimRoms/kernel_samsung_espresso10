@@ -522,7 +522,7 @@ struct page *__page_cache_alloc(gfp_t gfp)
 			n = cpuset_mem_spread_node();
 			page = alloc_pages_exact_node(n, gfp, 0);
 		} while (!put_mems_allowed(cpuset_mems_cookie) && !page);
-+
+
 		return page;
 	}
 	return alloc_pages(gfp, 0);
@@ -1387,7 +1387,6 @@ generic_file_aio_read(struct kiocb *iocb, const struct iovec *iov,
 	retval = generic_segment_checks(iov, &nr_segs, &count, VERIFY_WRITE);
 	if (retval)
 		return retval;
-
 
 	/* coalesce the iovecs and go direct-to-BIO for O_DIRECT */
 	if (filp->f_flags & O_DIRECT) {

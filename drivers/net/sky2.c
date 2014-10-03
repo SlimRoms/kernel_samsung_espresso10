@@ -2443,7 +2443,7 @@ static struct sk_buff *sky2_receive(struct net_device *dev,
 	prefetch(sky2->rx_ring + sky2->rx_next);
 
 	if (vlan_tx_tag_present(re->skb))
-		count -= VLAN_HLEN; /* Account for vlan tag */
+		count -= VLAN_HLEN;	/* Account for vlan tag */
 
 	/* This chip has hardware problems that generates bogus status.
 	 * So do only marginal checking and expect higher level protocols
@@ -2504,7 +2504,6 @@ static inline void sky2_tx_done(struct net_device *dev, u16 last)
 static inline void sky2_skb_rx(const struct sky2_port *sky2,
 			       struct sk_buff *skb)
 {
-
 	if (skb->ip_summed == CHECKSUM_NONE)
 		netif_receive_skb(skb);
 	else
@@ -2558,7 +2557,7 @@ static void sky2_rx_checksum(struct sky2_port *sky2, u32 status)
 	}
 }
 
-+static void sky2_rx_tag(struct sky2_port *sky2, u16 length)
+static void sky2_rx_tag(struct sky2_port *sky2, u16 length)
 {
 	struct sk_buff *skb;
 
@@ -2624,7 +2623,6 @@ static int sky2_status_intr(struct sky2_hw *hw, int to_do, u16 idx)
 			}
 
 			skb->protocol = eth_type_trans(skb, dev);
-
 			sky2_skb_rx(sky2, skb);
 
 			/* Stop after net poll weight */
