@@ -1039,7 +1039,6 @@ grow_dev_page(struct block_device *bdev, sector_t block,
 	link_dev_buffers(page, bh);
 	end_block = init_page_buffers(page, bdev, index << sizebits, size);
 	spin_unlock(&inode->i_mapping->private_lock);
-
 done:
 	ret = (block < end_block) ? 1 : -ENXIO;
 
@@ -1056,7 +1055,6 @@ failed:
 static int
 grow_buffers(struct block_device *bdev, sector_t block, int size)
 {
-	struct page *page;
 	pgoff_t index;
 	int sizebits;
 
@@ -1100,7 +1098,6 @@ __getblk_slow(struct block_device *bdev, sector_t block, int size)
 		return NULL;
 	}
 
-retry:
 	for (;;) {
 		struct buffer_head *bh;
 		int ret;
@@ -1108,6 +1105,7 @@ retry:
 		bh = __find_get_block(bdev, block, size);
 		if (bh)
 			return bh;
+
 		ret = grow_buffers(bdev, block, size);
 		if (ret < 0)
 			return NULL;

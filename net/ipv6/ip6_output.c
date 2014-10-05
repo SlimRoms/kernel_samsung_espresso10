@@ -1381,7 +1381,6 @@ int ip6_append_data(struct sock *sk, int getfrag(void *from, char *to,
 			unsigned int fraggap;
 			unsigned int alloclen;
 alloc_new_skb:
-
 			/* There's no room in the current skb */
 			if (skb)
 				fraggap = skb->len - maxfraglen;
@@ -1399,10 +1398,9 @@ alloc_new_skb:
 			 * we know we need more fragment(s).
 			 */
 			datalen = length + fraggap;
+
 			if (datalen > (cork->length <= mtu && !(cork->flags & IPCORK_ALLFRAG) ? mtu : maxfraglen) - fragheaderlen)
 				datalen = maxfraglen - fragheaderlen - rt->dst.trailer_len;
-
-			fraglen = datalen + fragheaderlen;
 			if ((flags & MSG_MORE) &&
 			    !(rt->dst.dev->features&NETIF_F_SG))
 				alloclen = mtu;

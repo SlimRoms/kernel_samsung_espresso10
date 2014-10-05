@@ -1246,8 +1246,8 @@ out_bh:
 }
 
 static int udf_load_sparable_map(struct super_block *sb,
-				struct udf_part_map *map,
-				struct sparablePartitionMap *spm)
+				 struct udf_part_map *map,
+				 struct sparablePartitionMap *spm)
 {
 	uint32_t loc;
 	uint16_t ident;
@@ -1357,9 +1357,10 @@ static int udf_load_logicalvol(struct super_block *sb, sector_t block,
 					map->s_partition_func =
 							udf_get_pblock_virt20;
 				}
-			
+			} else if (!strncmp(upm2->partIdent.ident,
+						UDF_ID_SPARABLE,
+						strlen(UDF_ID_SPARABLE))) {
 				if (udf_load_sparable_map(sb, map,
-				    (struct sparablePartitionMap *)gpm) < 0)
 				    (struct sparablePartitionMap *)gpm) < 0) {
 					ret = 1;
 					goto out_bh;

@@ -384,6 +384,7 @@ static void reg_regdb_query(const char *alpha2)
 
 	schedule_work(&reg_regdb_work);
 }
+
 /* Feel free to add any other sanity checks here */
 static void reg_regdb_size_check(void)
 {
@@ -2282,7 +2283,7 @@ void /* __init_or_exit */ regulatory_exit(void)
 	struct reg_beacon *reg_beacon, *btmp;
 
 	cancel_work_sync(&reg_work);
-	cancel_delayed_work(&reg_timeout);
+	cancel_delayed_work_sync(&reg_timeout);
 
 	mutex_lock(&cfg80211_mutex);
 	mutex_lock(&reg_mutex);
