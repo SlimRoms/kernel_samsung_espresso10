@@ -1387,8 +1387,8 @@ static int halt_simple(struct usbtest_dev *dev)
 {
 	int			ep;
 	int			retval = 0;
-	struct			urb *urb;
-	struct			usb_device *udev = testdev_to_usbdev(dev);
+	struct urb		*urb;
+	struct usb_device	*udev = testdev_to_usbdev(dev);
 
 	if (udev->speed == USB_SPEED_SUPER)
 		urb = simple_alloc_urb(udev, 0, 1024);
