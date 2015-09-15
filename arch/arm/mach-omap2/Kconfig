@@ -470,4 +470,3 @@ endmenu
 endif
 
 source arch/arm/mach-omap2/Kconfig.sec
-source arch/arm/mach-omap2/Kconfig.chn
