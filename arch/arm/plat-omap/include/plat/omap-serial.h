@@ -79,7 +79,6 @@
 #define OMAP_UART_WER_RI        0x04
 #define OMAP_UART_WER_DSR       0x02
 #define OMAP_UART_WER_CTS       0x01
-#define OMAP_UART_SCR_TX_EMPTY  0x08
 
 #define OMAP_UART_SCR_TX_EMPTY	0x08
 
